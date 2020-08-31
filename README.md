@@ -50,7 +50,7 @@ We will update .py files later.
 
 ### Advice accuracy on different numbers of validation samples per class
 
-![image-20200831174400004](img/image-20200831174400004.png){:height="700px" width="400px"
+![image-20200831174400004](img/image-20200831174400004.png)
 
 ### Layer selection
 
