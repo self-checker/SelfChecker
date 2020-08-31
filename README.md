@@ -36,7 +36,7 @@ We will update .py files later.
 
 ### Dataset and models
 
-![image-20200831170504843](img/image-20200831170504843.png)
+![image-20200831170504843](img/image-20200831170504843.png){:height="700px" width="400px"}
 
 ### p-value
 
@@ -50,7 +50,7 @@ We will update .py files later.
 
 ### Advice accuracy on different numbers of validation samples per class
 
-![image-20200831174400004](img/image-20200831174400004.png)
+![image-20200831174400004](img/image-20200831174400004.png){:height="700px" width="400px"
 
 ### Layer selection
 
