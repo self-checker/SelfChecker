@@ -36,17 +36,17 @@ We will update .py files later.
 
 ### Dataset and models
 
-![image-20200831170504843](img/image-20200831170504843.png){:height="700px" width="400px"}
+![image-20200831170504843](img/image-20200831170504843.png)
 
 ### p-value
 
-<img src="img/image-20200831174142288.png" alt="image-20200831174142288" style="zoom:40%;" />
+<img src="img/image-20200831174142288.png" alt="image-20200831174142288" width="400px"  />
 
 ### Alarm accuracy
 
 ### ![image-20200831174226084](img/image-20200831174226084.png)Advice accuracy
 
-<img src="img/image-20200831174318486.png" alt="image-20200831174318486" style="zoom:40%;" />
+<img src="img/image-20200831174318486.png" alt="image-20200831174318486" width="400px"/>
 
 ### Advice accuracy on different numbers of validation samples per class
 
@@ -54,11 +54,11 @@ We will update .py files later.
 
 ### Layer selection
 
-<img src="img/image-20200831174431731.png" alt="image-20200831174431731" style="zoom:43%;" />
+<img src="img/image-20200831174431731.png" alt="image-20200831174431731" width="500px" />
 
 ### Boosting strategy
 
-<img src="img/image-20200831174514579.png" alt="image-20200831174514579" style="zoom:43%;" />
+<img src="img/image-20200831174514579.png" alt="image-20200831174514579" width="500px" />
 
 
 
