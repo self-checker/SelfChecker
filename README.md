@@ -3,10 +3,13 @@
 
 <h3 align="center"> <b>A self-checking tool for detecting unintended anomalies and interntiaonal adversaries in Deep Learning systems.</b> </h3>
 
-
+<p align="center">
 <center>
 <a href=""><img src="img/SelfChecker-Framework.png" alt="Logo" width=75%> </a>
 </center>
+</p>
+
+
 
 <p align="center">
     the International Conference on Software Engineering (<b>ICSE</b>), May 2021.
@@ -28,11 +31,6 @@
     <a href="https://www.comp.nus.edu.sg"><img src="https://www.comp.nus.edu.sg/templates/t3_nus2015/images/assets/logos/logo.png" alt="Logo" width=25%> </a> 
     <br/><br/>
   </p>
-
-<center>
-
-</center>
-
 
 
 <p align="center">
