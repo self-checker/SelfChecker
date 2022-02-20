@@ -15,17 +15,17 @@
     the International Conference on Software Engineering (<b>ICSE</b>), May 2021.
     <br />
     <a href="https://yanxiao6.github.io/"><strong>Yan Xiao</strong></a>
-    ·
+    
     <a href="https://www.cs.ubc.ca/~bestchai/"><strong>Ivan Beschastnikh</strong></a>
-    ·
+    
     <a href="https://cs.gmu.edu/~dsr/"><strong>David S. Rosenblum</strong></a>
-    ·
+    
     <a href="https://sunchangsheng.com"><strong>Changsheng Sun</strong></a>
-    ·
+    
     <a href="https://engineering.virginia.edu/faculty/sebastian-elbaum"><strong>Sebastian Elbaum</strong></a>
-    ·
+    
     <a href="http://linyun.info"><strong>Yun Lin</strong></a>
-    ·
+    
     <a href="https://www.comp.nus.edu.sg/~dongjs/"><strong>Jin Song Dong</strong></a>
     <br/><br/>
     <a href="https://www.comp.nus.edu.sg"><img src="https://www.comp.nus.edu.sg/templates/t3_nus2015/images/assets/logos/logo.png" alt="Logo" width=25%> </a> 
