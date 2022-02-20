@@ -7,7 +7,7 @@
 <center>
 <b>A self-checking tool for detecting unintended anomalies and interntiaonal adversaries in Deep Learning systems.</b>
 <br/>
-<a href=""><img src="img/Selfchecker.png" alt="Logo" width=70%></a>
+<a href=""><img src="img/Selfchecker.png" alt="Logo" width=100%></a>
 </center>
 </p>
 
