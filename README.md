@@ -1,11 +1,12 @@
 
 <h1 align="center">SelfChecker</h1>
 
-<b>A self-checking tool for detecting unintended anomalies and interntiaonal adversaries in Deep Learning systems.</b>
+
 
 <p align="center">
 <center>
-<a href=""><img src="img/SelfChecker-Framework.png" alt="Logo" width=80%></a>
+<b>A self-checking tool for detecting unintended anomalies and interntiaonal adversaries in Deep Learning systems.</b>
+<a href=""><img src="img/Selfchecker.png" alt="Logo" width=70%></a>
 </center>
 </p>
 
@@ -21,9 +22,9 @@
     <a href="https://cs.gmu.edu/~dsr/"><strong>David S. Rosenblum</strong></a>
     ·
     <a href="https://sunchangsheng.com"><strong>Changsheng Sun</strong></a>
-    <br/>
-    <a href="https://engineering.virginia.edu/faculty/sebastian-elbaum"><strong>Sebastian Elbaum</strong></a>
     ·
+    <a href="https://engineering.virginia.edu/faculty/sebastian-elbaum"><strong>Sebastian Elbaum</strong></a>
+    <br/>
     <a href="http://linyun.info"><strong>Yun Lin</strong></a>
     ·
     <a href="https://www.comp.nus.edu.sg/~dongjs/"><strong>Jin Song Dong</strong></a>
@@ -63,7 +64,7 @@ In this paper we describe a self-checking system, called SelfChecker, that trigg
 SelfChecker also provides advice in the form of an alternative prediction. This archive includes codes for generating probability density functions, performing layer selections, and alarm and advice analyses.
 
 <center>
-<a href=""><img src="img/attn.png" alt="Logo" width=55%> </a>
+<a href=""><img src="img/attn.png" alt="Logo" width=45%> </a>
 </center>
 
 ## Repo structure
