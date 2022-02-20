@@ -1,11 +1,11 @@
 
 <h1 align="center">SelfChecker</h1>
 
-<h3 align="center"> <b>A self-checking tool for detecting unintended anomalies and interntiaonal adversaries in Deep Learning systems.</b> </h3>
+<b>A self-checking tool for detecting unintended anomalies and interntiaonal adversaries in Deep Learning systems.</b>
 
 <p align="center">
 <center>
-<a href=""><img src="img/SelfChecker-Framework.png" alt="Logo" width=50%></a>
+<a href=""><img src="img/SelfChecker-Framework.png" alt="Logo" width=80%></a>
 </center>
 </p>
 
