@@ -5,7 +5,7 @@
 
 <p align="center">
 <center>
-<a href=""><img src="img/SelfChecker-Framework.png" alt="Logo" width=75%> </a>
+<a href=""><img src="img/SelfChecker-Framework.png" alt="Logo" width=50%></a>
 </center>
 </p>
 
