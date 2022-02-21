@@ -109,15 +109,14 @@ def _get_train_ats(model, x_train, x_valid, layer_names, args):
         model (keras model): Subject model.
         x_train (ndarray): Set of training inputs.
         x_valid (ndarray): Set of validation inputs.
-        x_test (ndarray): Set of testing inputs.
         layer_names (list): List of selected layer names.
         args: keyboard args.
 
     Returns:
         train_ats (list): ats of train set.
         train_pred (list): pred of train set.
-        target_ats (list): ats of target set.
-        target_pred (list): pred of target set.
+        valid_ats (list): ats of target set.
+        valid_pred (list): pred of target set.
     """
 
     saved_train_path = _get_saved_path(args.save_path, "train", layer_names)
@@ -160,15 +159,11 @@ def _get_target_ats(model, x_test, layer_names, args):
 
     Args:
         model (keras model): Subject model.
-        x_train (ndarray): Set of training inputs.
-        x_valid (ndarray): Set of validation inputs.
         x_test (ndarray): Set of testing inputs.
         layer_names (list): List of selected layer names.
         args: keyboard args.
 
     Returns:
-        train_ats (list): ats of train set.
-        train_pred (list): pred of train set.
         target_ats (list): ats of target set.
         target_pred (list): pred of target set.
     """
@@ -417,11 +412,7 @@ def test_fetch_kdes(model, x_test, y_test, layer_names, args):
 
     Args:
         model (keras model): Subject model.
-        x_train (ndarray): Set of training inputs.
-        x_valid (ndarray): Set of validation inputs.
         x_test (ndarray): Set of testing inputs.
-        y_train (ndarray): Ground truth of training inputs.
-        y_valid (ndarray): Ground truth of validation inputs.
         y_test (ndarray): Ground truth of testing inputs.
         layer_names (list): List of selected layer names.
         args: Keyboard args.

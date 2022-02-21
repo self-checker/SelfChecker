@@ -3,7 +3,7 @@ import numpy as np
 import itertools
 import sys
 
-# path_name = "cifar10/conv"
+
 path_name = sys.argv[1] + "/" + sys.argv[2]
 pred_labels = np.load("./tmp/" + path_name + "/pred_labels_valid.npy")
 
