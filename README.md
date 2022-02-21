@@ -92,20 +92,11 @@ conda activate sc
 ## How to run the demo
 
 - We prepare a pre-trained model ConvNet on CIFAR-10: python sc.pyc
-- To run the whole project: bash exe.sh
-
-## APIs
-### model
-
-### training_set
-
-### test_sample
-
-### numclasses
-
-### alarm
-
-### advice
+- To run the whole project: 
+    ```bash
+    bash exe_train.sh
+    bash exe_deploy.sh
+    ```
 
 ## Citation
 ```bibtex
