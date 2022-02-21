@@ -1,59 +1,31 @@
 #!/bin/bash
-python -u main_kde.py  | tee "log_kde.txt" 
+dataset="cifar10"
+model="conv"
+num_classes=10
+num_layers=9
 
-for((i=0;i<10;i++)); 
-do
-	python layer_selection_agree.py $((i)) &
-done
+#python -u main_kde.py --dataset $dataset --model $model --num_classes $num_classes | tee "log_kde.txt"
 
-wait
+#for((i=0;i<$num_classes;i++));
+#do
+#	python layer_selection_agree.py $dataset $model $num_classes $num_layers $((i)) &
+#done
+#
+#wait
+#
+#
+#for((i=0;i<$num_classes;i++));
+#do
+#	python layer_selection_condition.py $dataset $model $num_classes $num_layers $((i)) &
+#done
+#
+#wait
+#
+#for((i=0;i<$num_classes;i++));
+#do
+#	python layer_selection_condition_neg.py $dataset $model $num_classes $num_layers $((i)) &
+#done
+#
+#wait
 
-
-for((i=0;i<10;i++)); 
-do
-	python layer_selection_condition.py $((i)) &
-done
-
-wait
-
-for((i=0;i<10;i++)); 
-do
-	python layer_selection_condition_neg.py $((i)) &
-done
-
-# for((i=0;i<10;i++)); 
-# do
-
-# 	for((j=0;j<10;j++)); 
-# do
-# 	python layer_selection_agree.py $((j+i*10)) &
-# done
-
-# wait
-# done
-
-# for((i=0;i<10;i++)); 
-# do
-
-# 	for((j=0;j<10;j++)); 
-# do
-# 	python layer_selection_condition.py $((j+i*10)) &
-# done
-
-# wait
-# done
-
-# for((i=0;i<10;i++)); 
-# do
-
-# 	for((j=0;j<10;j++)); 
-# do
-# 	python layer_selection_condition_neg.py $((j+i*10)) &
-# done
-
-# wait
-# done
-
-wait
-
-python -u sc.py  | tee "log_sc.txt"
+python -u sc.py $dataset $model $num_classes | tee "log_sc.txt"

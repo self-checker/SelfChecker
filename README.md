@@ -5,7 +5,7 @@
 
 <p align="center">
 <center>
-<b>A self-checking tool for detecting unintended anomalies and interntiaonal adversaries in Deep Learning systems.</b>
+<b>A self-checking tool for Deep Neural Networks to detect the potentially incorrect model decision and generate advice to auto-correct the model decision on runtime.</b>
 <br/>
 <a href=""><img src="img/Selfchecker.png" alt="Logo" width=100%></a>
 </center>
@@ -84,9 +84,10 @@ We will update .py files later.
 
 ## Dependencies
 
-- `tensorflow==1.13.1`
-- `Keras`
-- `scipy==1.3.2`
+```bash
+conda env create -f sc.yml
+conda activate sc
+```
 
 ## How to run the demo
 

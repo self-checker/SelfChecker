@@ -3,12 +3,14 @@ import numpy as np
 import itertools
 import sys
 
-path_name = "cifar10/conv"
+# path_name = "cifar10/conv"
+path_name = sys.argv[1] + "/" + sys.argv[2]
 pred_labels = np.load("./tmp/" + path_name + "/pred_labels_valid.npy")
 
-num_classes = 10
-num_layers = 9
+num_classes = int(sys.argv[3])
+num_layers = int(sys.argv[4])
 total_layers = [x for x in range(num_layers)]
+print("path_name: {}, num_classes: {}, num_layers: {}".format(path_name, num_classes, num_layers))
 
 
 def calculate_F1(layers, pred_label_idx):
@@ -80,8 +82,9 @@ selected_layers_dict = {}
 
 
 # multi-thread version
-label = int(sys.argv[1])
+label = int(sys.argv[5])
 print("label: {}".format(label))
+
 # generate selected layers per class
 selected_layer_for_label(label, selected_layers_dict)
 
