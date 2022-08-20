@@ -102,22 +102,21 @@ def get_ats(
     return ats, pred
 
 
-def _get_train_target_ats(model, x_train, x_valid, x_test, layer_names, args):
+def _get_train_ats(model, x_train, x_valid, layer_names, args):
     """Extract ats of train and validation inputs. If there are saved files, then skip it.
 
     Args:
         model (keras model): Subject model.
         x_train (ndarray): Set of training inputs.
         x_valid (ndarray): Set of validation inputs.
-        x_test (ndarray): Set of testing inputs.
         layer_names (list): List of selected layer names.
         args: keyboard args.
 
     Returns:
         train_ats (list): ats of train set.
         train_pred (list): pred of train set.
-        target_ats (list): ats of target set.
-        target_pred (list): pred of target set.
+        valid_ats (list): ats of target set.
+        valid_pred (list): pred of target set.
     """
 
     saved_train_path = _get_saved_path(args.save_path, "train", layer_names)
@@ -152,6 +151,23 @@ def _get_train_target_ats(model, x_train, x_valid, x_test, layer_names, args):
         )
         print(infog("valid" + " ATs is saved at " + saved_valid_path[0]))
 
+    return train_ats, train_pred, valid_ats, valid_pred
+
+
+def _get_target_ats(model, x_test, layer_names, args):
+    """Extract ats of train and validation inputs. If there are saved files, then skip it.
+
+    Args:
+        model (keras model): Subject model.
+        x_test (ndarray): Set of testing inputs.
+        layer_names (list): List of selected layer names.
+        args: keyboard args.
+
+    Returns:
+        target_ats (list): ats of target set.
+        target_pred (list): pred of target set.
+    """
+
     saved_test_path = _get_saved_path(args.save_path, 'test', layer_names)
     if os.path.exists(saved_test_path[0]):
         print(infog("Found saved {} ATs, skip serving").format("test"))
@@ -168,7 +184,7 @@ def _get_train_target_ats(model, x_train, x_valid, x_test, layer_names, args):
         )
         print(infog("test" + " ATs is saved at " + saved_test_path[0]))
 
-    return train_ats, train_pred, valid_ats, valid_pred, test_ats, test_pred
+    return test_ats, test_pred
 
 
 def _get_kdes(train_ats, class_matrix, args):
@@ -301,17 +317,15 @@ def save_results(fileName, obj):
     pickle.dump(obj, f)
 
 
-def fetch_kdes(model, x_train, x_valid, x_test, y_train, y_valid, y_test, layer_names, args):
+def train_fetch_kdes(model, x_train, x_valid, y_train, y_valid, layer_names, args):
     """kde functions and kde inferred classes per class for all layers
 
     Args:
         model (keras model): Subject model.
         x_train (ndarray): Set of training inputs.
         x_valid (ndarray): Set of validation inputs.
-        x_test (ndarray): Set of testing inputs.
         y_train (ndarray): Ground truth of training inputs.
         y_valid (ndarray): Ground truth of validation inputs.
-        y_test (ndarray): Ground truth of testing inputs.
         layer_names (list): List of selected layer names.
         args: Keyboard args.
 
@@ -321,14 +335,12 @@ def fetch_kdes(model, x_train, x_valid, x_test, y_train, y_valid, y_test, layer_
     """
     print(info("### y_train len:{} ###".format(len(y_train))))
     print(infog("### y_valid len:{} ###".format(len(y_valid))))
-    print(infog("### y_test len:{} ###".format(len(y_test))))
 
     # obtain the number of neurons for each layer
     model_output_idx = _get_model_output_idx(model, layer_names)
 
     # generate feature vectors for each layer on training, validation set
-    all_train_ats, train_pred, all_valid_ats, valid_pred, all_test_ats, test_pred = _get_train_target_ats(
-        model, x_train, x_valid, x_test, layer_names, args)
+    all_train_ats, train_pred, all_valid_ats, valid_pred = _get_train_ats(model, x_train, x_valid, layer_names, args)
 
     # obtain the input indexes for each class
     class_matrix = {}
@@ -338,7 +350,6 @@ def fetch_kdes(model, x_train, x_valid, x_test, y_train, y_valid, y_test, layer_
         class_matrix[label].append(i)
 
     pred_labels_valid = np.zeros([x_valid.shape[0], (len(layer_names) + 1)])
-    pred_labels_test = np.zeros([x_test.shape[0], (len(layer_names) + 1)])
     layer_idx = 0
     for layer_name in layer_names:
         print(info("Layer: {}".format(layer_name)))
@@ -370,7 +381,6 @@ def fetch_kdes(model, x_train, x_valid, x_test, y_train, y_valid, y_test, layer_
         (start_idx, end_idx) = model_output_idx[layer_name]
         train_ats = all_train_ats[:, start_idx:end_idx]
         valid_ats = all_valid_ats[:, start_idx:end_idx]
-        test_ats = all_test_ats[:, start_idx:end_idx]
 
         # generate kde functions per class and layer
         kdes_file = args.save_path + "/kdes-pack/%s" % layer_name
@@ -388,15 +398,64 @@ def fetch_kdes(model, x_train, x_valid, x_test, y_train, y_valid, y_test, layer_
         print(prefix + "Fetching KDE inference")
         pred_labels = kde_values_analysis(kdes, removed_cols, valid_ats, y_valid, valid_pred, "valid", args)
         pred_labels_valid.T[layer_idx] = pred_labels
+
+        layer_idx += 1
+
+    # save all inferred classes for evaluation
+    pred_labels_valid.T[-1] = valid_pred
+    pred_labels_concat_valid = np.concatenate((pred_labels_valid, np.reshape(y_valid, [y_valid.shape[0], 1])), axis=1)
+    np.save(args.save_path + "/pred_labels_valid", pred_labels_concat_valid)
+
+
+def test_fetch_kdes(model, x_test, y_test, layer_names, args):
+    """kde functions and kde inferred classes per class for all layers
+
+    Args:
+        model (keras model): Subject model.
+        x_test (ndarray): Set of testing inputs.
+        y_test (ndarray): Ground truth of testing inputs.
+        layer_names (list): List of selected layer names.
+        args: Keyboard args.
+
+    Returns:
+        None
+        There is no returns but will save kde functions per class and inferred classes for all layers
+    """
+
+    print(infog("### y_test len:{} ###".format(len(y_test))))
+
+    # obtain the number of neurons for each layer
+    model_output_idx = _get_model_output_idx(model, layer_names)
+
+    # generate feature vectors for each layer on training, validation set
+    all_test_ats, test_pred = _get_target_ats(model, x_test, layer_names, args)
+
+    pred_labels_test = np.zeros([x_test.shape[0], (len(layer_names) + 1)])
+    layer_idx = 0
+    for layer_name in layer_names:
+        print(info("Layer: {}".format(layer_name)))
+
+        prefix = info("[" + layer_name + "] ")
+
+        # get layer names ats
+        (start_idx, end_idx) = model_output_idx[layer_name]
+        test_ats = all_test_ats[:, start_idx:end_idx]
+
+        # generate kde functions per class and layer
+        kdes_file = args.save_path + "/kdes-pack/%s" % layer_name
+        file = open(kdes_file, 'rb')
+        (kdes, removed_cols, max_kde, min_kde) = pickle.load(file)
+        print(infog("The number of removed columns: {}".format(len(removed_cols))))
+        print(info("load kdes from file:" + kdes_file))
+
+        # generate inferred classes for each layer
+        print(prefix + "Fetching KDE inference")
         pred_labels = kde_values_analysis(kdes, removed_cols, test_ats, y_test, test_pred, "test", args)
         pred_labels_test.T[layer_idx] = pred_labels
 
         layer_idx += 1
 
     # save all inferred classes for evaluation
-    pred_labels_valid.T[-1] = valid_pred
     pred_labels_test.T[-1] = test_pred
-    pred_labels_concat_valid = np.concatenate((pred_labels_valid, np.reshape(y_valid, [y_valid.shape[0], 1])), axis=1)
     pred_labels_concat_test = np.concatenate((pred_labels_test, np.reshape(y_test, [y_test.shape[0], 1])), axis=1)
-    np.save(args.save_path + "/pred_labels_valid", pred_labels_concat_valid)
     np.save(args.save_path + "/pred_labels_test", pred_labels_concat_test)

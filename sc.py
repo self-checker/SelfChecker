@@ -1,12 +1,13 @@
 import json
 import numpy as np
+import sys
 
-path_name = "cifar10/conv"
+
+path_name = sys.argv[1] + "/" + sys.argv[2]
 pred_labels = np.load("./tmp/" + path_name + "/pred_labels_test.npy")
 
-num_classes = 10
-num_layers = 9
-
+num_classes = int(sys.argv[3])
+print("path_name: {}, num_classes: {}".format(path_name, num_classes))
 
 # load indexes of selected layers per class
 layers_agree, layers_accuracy, layers_weight, layers_accuracy_neg, layers_weight_neg = {}, {}, {}, {}, {}
