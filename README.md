@@ -39,10 +39,10 @@
     <!-- <a href="https://pytorch.org/get-started/locally/"><img alt="PyTorch" src="https://img.shields.io/badge/PyTorch-ee4c2c?logo=pytorch&logoColor=white"></a>
     <a href="https://pytorchlightning.ai/"><img alt="Lightning" src="https://img.shields.io/badge/-Lightning-792ee5?logo=pytorchlightning&logoColor=white"></a><br><br> -->
     <a href='https://dl.acm.org/doi/abs/10.1109/ICSE43902.2021.00044'>
-      <img src='https://img.shields.io/badge/Paper-PDF-green?style=flat&logo=arXiv&logoColor=green' alt='Paper PDF'>
+      <img src='https://img.shields.io/badge/Paper-PDF-green?style=flat' alt='Paper PDF'>
     </a>
     <a href='https://arxiv.org/abs/2103.02371'>
-      <img src='https://img.shields.io/badge/arXiv-2103.02371-red?style=flat&logo=arXiv' alt='Paper PDF'>
+      <img src='https://img.shields.io/badge/arXiv-2103.02371-red?style=flat' alt='Paper PDF'>
     </a> 
     <a href='https://trustdnn.comp.nus.edu.sg' style='padding-left: 0.5rem;'>
       <img src='https://img.shields.io/badge/Project-Page-blue?style=flat&logo=Google%20chrome&logoColor=blue' alt='Project Page'>
