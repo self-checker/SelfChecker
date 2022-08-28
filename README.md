@@ -42,19 +42,14 @@
       <img src='https://img.shields.io/badge/Paper-PDF-green?style=flat&logo=arXiv&logoColor=green' alt='Paper PDF'>
     </a>
     <a href='https://arxiv.org/abs/2103.02371'>
-      <img src='https://img.shields.io/badge/arXiv-1234.56789-b31b1b.svg' alt='Paper PDF'>
+      <img src='https://img.shields.io/badge/arXiv-2103.02371-red?style=flat&logo=arXiv' alt='Paper PDF'>
     </a> 
     <a href='https://trustdnn.comp.nus.edu.sg' style='padding-left: 0.5rem;'>
       <img src='https://img.shields.io/badge/Project-Page-blue?style=flat&logo=Google%20chrome&logoColor=blue' alt='Project Page'>
     <a href='https://youtu.be/0k7H3ZNgARE' style='padding-left: 0.5rem;'>
       <img src='https://img.shields.io/badge/Youtube-Video-red?style=flat&logo=youtube&logoColor=red' alt='Youtube Video'>
     </a>
-    <a href='https://colab.research.google.com/drive/' style='padding-left: 0.5rem;'>
-      <img src='https://colab.research.google.com/assets/colab-badge.svg' alt='Google Colab'>
-    </a>
-    <a href='https://discord.gg/' style='padding-left: 0.5rem;'>
-      <img src='https://img.shields.io/badge/Discord-Room-purple?style=flat&logo=Discord&logoColor=purple' alt='Discord Room'>
-    </a>
+   
   </p>
 </p>
 
